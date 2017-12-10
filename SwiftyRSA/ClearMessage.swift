@@ -72,7 +72,7 @@ public class ClearMessage: Message {
         
         var encryptedDataBytes = [UInt8](repeating: 0, count: 0)
         var idx = 0
-        while idx < decryptedDataAsArray.count {
+        while (idx < decryptedDataAsArray.count || (idx == 0 && decryptedDataAsArray.count == 0) && padding != []) {
             
             let idxEnd = min(idx + maxChunkSize, decryptedDataAsArray.count)
             let chunkData = [UInt8](decryptedDataAsArray[idx..<idxEnd])
